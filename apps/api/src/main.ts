@@ -5,10 +5,13 @@
 
 import * as express from 'express';
 import * as path from 'path';
+import router from './app/routes';
 
 const app = express();
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+app.use('/api', router);
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to api!' });
